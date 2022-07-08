@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Objects;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
 
     ImageView btnMenu;
     Dialog dialog;
+    FloatingActionButton floatingActionButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
 
         btnMenu = findViewById(R.id.menu);
+        floatingActionButton = findViewById(R.id.fabAdd);
         dialog = new Dialog(this);
 
         btnMenu.setOnClickListener(new View.OnClickListener() {
@@ -33,6 +36,15 @@ public class MainActivity extends AppCompatActivity {
                 menuDialog();
             }
         });
+
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                BottomAddFragment bottomAddFragment = new BottomAddFragment();
+                bottomAddFragment.show(getSupportFragmentManager(), "bottomAddFragment");
+            }
+        });
+
     }
 
     private void menuDialog() {

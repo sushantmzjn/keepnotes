@@ -3,8 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Sushant08/AndroidStudioProjects/KeepNotes/app/src/main/res/drawable/bottomsheet_shape.xml" value="0.1" />
         <entry key="..\:/Users/Sushant08/AndroidStudioProjects/KeepNotes/app/src/main/res/layout/activity_main.xml" value="0.20208333333333334" />
         <entry key="..\:/Users/Sushant08/AndroidStudioProjects/KeepNotes/app/src/main/res/layout/activity_splash_screen.xml" value="0.20208333333333334" />
+        <entry key="..\:/Users/Sushant08/AndroidStudioProjects/KeepNotes/app/src/main/res/layout/bottomsheet.xml" value="0.20208333333333334" />
         <entry key="..\:/Users/Sushant08/AndroidStudioProjects/KeepNotes/app/src/main/res/layout/menudialog.xml" value="0.20104166666666667" />
       </map>
     </option>

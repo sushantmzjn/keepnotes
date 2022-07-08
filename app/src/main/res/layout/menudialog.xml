@@ -37,6 +37,7 @@
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:text="About"
+                    android:fontFamily="@font/poppins_medium"
                     android:layout_weight="1"
                     android:textColor="@color/black"
                     android:textSize="32sp" />
@@ -47,8 +48,9 @@
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:layout_weight="1"
+                    android:fontFamily="@font/poppins_medium"
                     android:text="Google Keep is a note-taking service included as part of the free, web-based Google Docs Editors suite offered by Google. The service also includes: Google Docs, Google Sheets, Google Slides, Google Drawings, Google Forms and Google Sites."
-                    android:textSize="22sp"
+                    android:textSize="20sp"
                     />
 
             </LinearLayout>
