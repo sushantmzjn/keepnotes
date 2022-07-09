@@ -1,15 +1,15 @@
 package com.android.keepnotes.Model;
 
 public class Notes {
-    int ID;
+
     String title, description;
 
-    public int getID() {
-        return ID;
+    public Notes() {
     }
 
-    public void setID(int ID) {
-        this.ID = ID;
+    public Notes(String title, String description) {
+        this.title = title;
+        this.description = description;
     }
 
     public String getTitle() {
