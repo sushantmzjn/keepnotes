@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<Notes> notesArrayList;
     NotesAdapter notesAdapter;
-    DatabaseReference databaseReference;
+
 
 
     @Override
@@ -69,8 +69,8 @@ public class MainActivity extends AppCompatActivity {
         notesAdapter = new NotesAdapter(MainActivity.this, notesArrayList);
         recyclerView.setAdapter(notesAdapter);
 
-        databaseReference = FirebaseDatabase.getInstance().getReference("Notes");
-        databaseReference.addValueEventListener(new ValueEventListener() {
+        DAONotes dao = new DAONotes();
+        dao.get().addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 notesArrayList.clear();
