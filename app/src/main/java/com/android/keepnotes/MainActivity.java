@@ -31,10 +31,9 @@ public class MainActivity extends AppCompatActivity {
     FloatingActionButton floatingActionButton;
 
     RecyclerView recyclerView;
-    ArrayList<Notes> notesArrayList;
+    ArrayList<Notes> notesList;
+    DatabaseReference databaseReference;
     NotesAdapter notesAdapter;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +42,18 @@ public class MainActivity extends AppCompatActivity {
         Objects.requireNonNull(getSupportActionBar()).hide();
 
         btnMenu = findViewById(R.id.menu);
-        recyclerView = findViewById(R.id.recyclerNotes);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
         floatingActionButton = findViewById(R.id.fabAdd);
-        dialog = new Dialog(this);
+        recyclerView = findViewById(R.id.recyclerNotes);
 
+
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("Notes");
+        notesList = new ArrayList<>();
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        notesAdapter = new NotesAdapter(this, notesList);
+        recyclerView.setAdapter(notesAdapter);
+
+        dialog = new Dialog(this);
         btnMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,20 +69,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        loadNotes();
 
-        notesArrayList = new ArrayList<>();
-        notesAdapter = new NotesAdapter(MainActivity.this, notesArrayList);
-        recyclerView.setAdapter(notesAdapter);
 
-        DAONotes dao = new DAONotes();
-        dao.get().addValueEventListener(new ValueEventListener() {
+    }
+
+
+    private void menuDialog() {
+        dialog.setContentView(R.layout.menudialog);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
+    }
+
+    private void loadNotes(){
+        databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                notesArrayList.clear();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                notesList.clear();
+                for (DataSnapshot dataSnapshot: snapshot.getChildren()){
                     Notes notes = dataSnapshot.getValue(Notes.class);
-                    notesArrayList.add(notes);
-
+                    notesList.add(notes);
                 }
                 notesAdapter.notifyDataSetChanged();
             }
@@ -87,12 +98,5 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-    }
-
-    private void menuDialog() {
-        dialog.setContentView(R.layout.menudialog);
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.show();
     }
 }

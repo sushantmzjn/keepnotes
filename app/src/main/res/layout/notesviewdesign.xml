@@ -13,6 +13,14 @@
         android:backgroundTint="@color/purple_700"
         app:cardCornerRadius="8dp">
 
+        <TextView
+            android:id="@+id/option"
+            android:layout_width="25dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_margin="5dp"
+            android:background="@drawable/ic_baseline_more_vert_24" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
